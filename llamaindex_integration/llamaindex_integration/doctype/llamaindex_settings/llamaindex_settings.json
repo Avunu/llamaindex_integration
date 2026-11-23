@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "connection_section",
+  "enabled",
+  "llama_cloud_api_key",
+  "monitored_email_account",
+  "extraction_section",
+  "allowed_extensions",
+  "min_classification_confidence",
+  "enable_packet_splitting",
+  "entity_section",
+  "fuzzy_match_threshold",
+  "entity_matches",
+  "rules_section",
+  "doctype_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "connection_section",
+   "fieldtype": "Section Break",
+   "label": "Connection"
+  },
+  {
+   "default": "0",
+   "description": "Turn ingestion on. Keep off until the LlamaCloud API key is saved, so no job runs before the key is set.",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "llama_cloud_api_key",
+   "fieldtype": "Password",
+   "label": "LlamaCloud API Key"
+  },
+  {
+   "description": "Only emails received on this account are ingested.",
+   "fieldname": "monitored_email_account",
+   "fieldtype": "Link",
+   "label": "Monitored Email Account",
+   "options": "Email Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "extraction_section",
+   "fieldtype": "Section Break",
+   "label": "Extraction"
+  },
+  {
+   "default": "pdf,png,jpg,jpeg,docx,xlsx",
+   "description": "Comma-separated file extensions to ingest.",
+   "fieldname": "allowed_extensions",
+   "fieldtype": "Data",
+   "label": "Allowed Extensions"
+  },
+  {
+   "default": "0.80",
+   "fieldname": "min_classification_confidence",
+   "fieldtype": "Float",
+   "label": "Minimum Classification Confidence"
+  },
+  {
+   "default": "0",
+   "description": "Not implemented in v1. Multi-document PDFs are not split, and this setting has no effect.",
+   "fieldname": "enable_packet_splitting",
+   "fieldtype": "Check",
+   "label": "Enable Packet Splitting"
+  },
+  {
+   "fieldname": "entity_section",
+   "fieldtype": "Section Break",
+   "label": "Entity Matching"
+  },
+  {
+   "default": "85",
+   "description": "Score from 0 to 100. Fuzzy matches below this score are rejected.",
+   "fieldname": "fuzzy_match_threshold",
+   "fieldtype": "Int",
+   "label": "Fuzzy Match Threshold"
+  },
+  {
+   "description": "How a Link field is matched to an existing record, per linked DocType. A linked DocType with no row is matched by exact name and exact title only.",
+   "fieldname": "entity_matches",
+   "fieldtype": "Table",
+   "label": "Entity Matches",
+   "options": "Llama Entity Match"
+  },
+  {
+   "fieldname": "rules_section",
+   "fieldtype": "Section Break",
+   "label": "Document Rules"
+  },
+  {
+   "fieldname": "doctype_rules",
+   "fieldtype": "Table",
+   "label": "Document Rules",
+   "options": "Llama DocType Rule"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "LlamaIndex Integration",
+ "name": "LlamaIndex Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

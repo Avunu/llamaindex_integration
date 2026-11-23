@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "target_doctype",
+  "classification_description",
+  "included_fields",
+  "duplicate_key_fields",
+  "reconciliation_field",
+  "default_values",
+  "auto_submit"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "description": "The submittable transaction DocType to create. Masters, singles and child tables are refused.",
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "columns": 4,
+   "description": "Natural-language rule passed to LlamaCloud classification.",
+   "fieldname": "classification_description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Classification Description",
+   "reqd": 1
+  },
+  {
+   "description": "Comma-separated fieldnames to extract, parent and child. Leave blank to extract the required fields.",
+   "fieldname": "included_fields",
+   "fieldtype": "Small Text",
+   "label": "Included Fields"
+  },
+  {
+   "description": "Comma-separated parent fieldnames of the target DocType that together identify a duplicate. Leave blank to skip the duplicate check. Cancelled documents never count as duplicates.",
+   "fieldname": "duplicate_key_fields",
+   "fieldtype": "Small Text",
+   "label": "Duplicate Key Fields"
+  },
+  {
+   "description": "Numeric header field of the target whose extracted value is checked against the total of the line items. Leave blank to skip the check.",
+   "fieldname": "reconciliation_field",
+   "fieldtype": "Data",
+   "label": "Reconciliation Field"
+  },
+  {
+   "description": "JSON object of default values for each new draft, keyed by fieldname, or by table.fieldname for a child row. For example {\"fieldname\": \"value\"}.",
+   "fieldname": "default_values",
+   "fieldtype": "Code",
+   "label": "Default Values",
+   "options": "JSON"
+  },
+  {
+   "default": "0",
+   "description": "Not implemented in v1. Documents are always saved as Draft, and this flag has no effect.",
+   "fieldname": "auto_submit",
+   "fieldtype": "Check",
+   "label": "Auto Submit"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "LlamaIndex Integration",
+ "name": "Llama DocType Rule",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

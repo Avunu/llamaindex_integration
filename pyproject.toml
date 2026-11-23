@@ -1,0 +1,69 @@
+[project]
+name = "llamaindex_integration"
+authors = [{ name = "Avunu LLC", email = "mail@avu.nu" }]
+description = "Ingest documents from a monitored email account into ERPNext as draft transactions, using LlamaCloud"
+requires-python = ">=3.14"
+readme = "README.md"
+license = { text = "MIT" }
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version"]
+dependencies = [
+    "llama-cloud-services==0.6.94",
+    "pydantic>=2.8,!=2.10",
+    "rapidfuzz>=3.14.3,<4",
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+# These dependencies are only installed when developer mode is enabled
+[tool.bench.dev-dependencies]
+# package_name = "~=1.1.0"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "I", "UP", "B", "RUF", "SIM", "C4", "PIE", "PERF", "T20"]
+ignore = ["E501", "W191"]
+typing-modules = ["frappe.types.DF"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "tab"
+docstring-code-format = true
+
+[tool.frappe-nix]
+schema = 1
+profile = "github:Avunu/frappe-standards-profile/main"
+frappe-major = 16
+
+[tool.ty.environment]
+python-version = "3.14"
+
+[tool.ty.src]
+include = ["llamaindex_integration"]
+
+[tool.ty.terminal]
+error-on-warning = true
+
+[tool.coverage.run]
+omit = ["*/tests/*", "*/test_*.py", "*/patches/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+precision = 1
+exclude_also = ["if TYPE_CHECKING:", "raise NotImplementedError", "@(abc\\.)?abstractmethod"]
+fail_under = 80
+
+[tool.vulture]
+exclude = [".venv/", "node_modules/", ".frappe-nix/", ".dev-dist/", ".devenv/", ".direnv/"]
+
+[tool.test_utils.static-analysis]
+whitelist = ["frappe.*"]
